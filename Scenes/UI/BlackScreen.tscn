@@ -1,0 +1,178 @@
+[gd_scene load_steps=7 format=3 uid="uid://cqjow8l1or4h4"]
+
+[ext_resource type="Texture2D" uid="uid://cwrerah6njgfo" path="res://Art/Generic_error_message.png" id="1_gyq25"]
+[ext_resource type="Script" path="res://Scripts/UI/black_screen.gd" id="1_k8fwi"]
+[ext_resource type="FontFile" uid="uid://bsgkydget2ok" path="res://SegoeUIVF.ttf" id="2_c62i7"]
+[ext_resource type="Texture2D" uid="uid://bkjnok5wkfdke" path="res://Art/Button.png" id="3_wlg8y"]
+[ext_resource type="AudioStream" uid="uid://b0wbnca6dxp6y" path="res://Audio/SFX/Windows Critical Error Sounds.mp3" id="4_pyioo"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_72am1"]
+texture = ExtResource("3_wlg8y")
+texture_margin_left = 6.0
+texture_margin_top = 2.0
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_k8fwi")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -409.0
+offset_top = -309.0
+offset_right = 633.0
+offset_bottom = 362.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_pyioo")
+volume_db = 8.0
+
+[node name="Window" type="Window" parent="." groups=["Error_Window"]]
+auto_translate_mode = 1
+title = "Name"
+initial_position = 2
+size = Vector2i(345, 160)
+visible = false
+always_on_top = true
+
+[node name="Camera2D" type="Camera2D" parent="Window"]
+
+[node name="ErrorMessage" type="TextureRect" parent="Window/Camera2D"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -176.0
+offset_top = -81.5
+offset_right = 176.0
+offset_bottom = 81.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("1_gyq25")
+
+[node name="ErrorButton" type="Button" parent="Window/Camera2D/ErrorMessage"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 248.0
+offset_top = 109.0
+offset_right = 352.0
+offset_bottom = 164.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_c62i7")
+theme_override_font_sizes/font_size = 12
+theme_override_styles/focus = SubResource("StyleBoxTexture_72am1")
+theme_override_styles/hover = SubResource("StyleBoxTexture_72am1")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_72am1")
+theme_override_styles/normal = SubResource("StyleBoxTexture_72am1")
+text = "Ok"
+
+[node name="ErrorLabel" type="Label" parent="Window/Camera2D/ErrorMessage"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -123.75
+offset_top = -16.085
+offset_right = 163.25
+offset_bottom = 71.915
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_c62i7")
+theme_override_font_sizes/font_size = 14
+text = "Whats your name?"
+
+[node name="TextEdit" type="TextEdit" parent="Window/Camera2D/ErrorMessage"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 3.33
+offset_top = -45.185
+offset_right = 103.33
+offset_bottom = -2.38499
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("2_c62i7")
+theme_override_font_sizes/font_size = 20
+placeholder_text = "Name"
+
+[node name="Window2" type="Window" parent="." groups=["Error_Window"]]
+auto_translate_mode = 1
+title = "Cool Name.."
+initial_position = 2
+size = Vector2i(345, 160)
+visible = false
+always_on_top = true
+
+[node name="Camera2D" type="Camera2D" parent="Window2"]
+
+[node name="ErrorMessage" type="TextureRect" parent="Window2/Camera2D"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -176.0
+offset_top = -81.5
+offset_right = 176.0
+offset_bottom = 81.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("1_gyq25")
+
+[node name="ErrorButton" type="Button" parent="Window2/Camera2D/ErrorMessage"]
+visible = false
+layout_mode = 0
+offset_left = 248.0
+offset_top = 109.0
+offset_right = 352.0
+offset_bottom = 164.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_c62i7")
+theme_override_font_sizes/font_size = 12
+theme_override_styles/focus = SubResource("StyleBoxTexture_72am1")
+theme_override_styles/hover = SubResource("StyleBoxTexture_72am1")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_72am1")
+theme_override_styles/normal = SubResource("StyleBoxTexture_72am1")
+text = "Ok"
+
+[node name="ErrorLabel" type="Label" parent="Window2/Camera2D/ErrorMessage"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -123.75
+offset_top = -16.085
+offset_right = 163.25
+offset_bottom = 71.915
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_c62i7")
+theme_override_font_sizes/font_size = 14
+text = "Oh.. "
+
+[connection signal="close_requested" from="Window" to="Window" method="_on_close_requested"]
+[connection signal="pressed" from="Window/Camera2D/ErrorMessage/ErrorButton" to="." method="_on_error_button_pressed"]
+[connection signal="pressed" from="Window/Camera2D/ErrorMessage/ErrorButton" to="Window" method="_on_error_button_pressed"]
+[connection signal="close_requested" from="Window2" to="." method="_on_window_2_close_requested"]
+[connection signal="close_requested" from="Window2" to="Window2" method="_on_close_requested"]
+[connection signal="pressed" from="Window2/Camera2D/ErrorMessage/ErrorButton" to="Window2" method="_on_error_button_pressed"]

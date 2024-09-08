@@ -1,0 +1,89 @@
+[gd_scene load_steps=7 format=3 uid="uid://w1dylnxdl2wo"]
+
+[ext_resource type="Script" path="res://Scripts/UI/you_are_back.gd" id="1_gbn2b"]
+[ext_resource type="Texture2D" uid="uid://cwrerah6njgfo" path="res://Art/Generic_error_message.png" id="2_2g6y5"]
+[ext_resource type="FontFile" uid="uid://bsgkydget2ok" path="res://SegoeUIVF.ttf" id="3_2yqt1"]
+[ext_resource type="Texture2D" uid="uid://bkjnok5wkfdke" path="res://Art/Button.png" id="4_53kee"]
+[ext_resource type="AudioStream" uid="uid://b0wbnca6dxp6y" path="res://Audio/SFX/Windows Critical Error Sounds.mp3" id="5_vrl63"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qsisw"]
+texture = ExtResource("4_53kee")
+texture_margin_left = 6.0
+texture_margin_top = 2.0
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_gbn2b")
+
+[node name="Window" type="Window" parent="." groups=["Error_Window"]]
+auto_translate_mode = 1
+title = "You are back?"
+position = Vector2i(787, 335)
+size = Vector2i(345, 160)
+always_on_top = true
+
+[node name="Camera2D" type="Camera2D" parent="Window"]
+
+[node name="ErrorMessage" type="TextureRect" parent="Window/Camera2D"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -176.0
+offset_top = -81.5
+offset_right = 176.0
+offset_bottom = 81.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("2_2g6y5")
+
+[node name="ErrorButton" type="Button" parent="Window/Camera2D/ErrorMessage"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 248.0
+offset_top = 109.0
+offset_right = 352.0
+offset_bottom = 164.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_2yqt1")
+theme_override_font_sizes/font_size = 12
+theme_override_styles/focus = SubResource("StyleBoxTexture_qsisw")
+theme_override_styles/hover = SubResource("StyleBoxTexture_qsisw")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_qsisw")
+theme_override_styles/normal = SubResource("StyleBoxTexture_qsisw")
+text = "..."
+
+[node name="ErrorLabel" type="Label" parent="Window/Camera2D/ErrorMessage"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -123.75
+offset_top = -16.085
+offset_right = 163.25
+offset_bottom = 71.915
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_2yqt1")
+theme_override_font_sizes/font_size = 14
+text = "Why Are you back?"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Window"]
+stream = ExtResource("5_vrl63")
+volume_db = 8.0
+
+[connection signal="close_requested" from="Window" to="." method="_on_window_close_requested"]
+[connection signal="close_requested" from="Window" to="Window" method="_on_close_requested"]
+[connection signal="pressed" from="Window/Camera2D/ErrorMessage/ErrorButton" to="." method="_on_error_button_pressed"]
+[connection signal="pressed" from="Window/Camera2D/ErrorMessage/ErrorButton" to="Window" method="_on_error_button_pressed"]

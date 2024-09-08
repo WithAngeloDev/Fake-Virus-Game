@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://yh8bc3j2tyjb"
+path="res://.godot/imported/Windows Critical Error Sounds2.mp3-98eec07f0bcd6a9a8730b8f4ac88d453.mp3str"
+
+[deps]
+
+source_file="res://Audio/SFX/Windows Critical Error Sounds2.mp3"
+dest_files=["res://.godot/imported/Windows Critical Error Sounds2.mp3-98eec07f0bcd6a9a8730b8f4ac88d453.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
